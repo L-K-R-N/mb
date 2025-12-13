@@ -1,0 +1,10 @@
+export { BurgerIcon } from "./ui/BurgerIcon";
+export { CameraIcon } from "./ui/CameraIcon";
+export { CloseIcon } from "./ui/CloseIcon";
+export { CosmeticIcon } from "./ui/CosmeticIcon";
+export { DressIcon } from "./ui/DressIcon";
+export { HouseIcon } from "./ui/HouseIcon";
+export { InstagramIcon } from "./ui/InstagramIcon";
+export { LogoIcon } from "./ui/LogoIcon";
+export { TelegramIcon } from "./ui/TelegramIcon";
+export { VKIcon } from "./ui/VKIcon";

@@ -1,0 +1,16 @@
+export const ROUTE_PATHS = {
+   main: "/",
+   login: "/login",
+   register: "/register",
+   passwordRecovery: "/password-recovery",
+   passwordReset: "/password-reset",
+   passwordChange: "/password-change",
+   support: "/support",
+   dashboard: "/dashboard",
+   newDashboard: "/new-dashboard",
+   tariffSelect: "/tariff-select",
+   products: "/products",
+   connect: "/connect",
+   profile: "/profile",
+   welcome: "/welcome",
+} as const;

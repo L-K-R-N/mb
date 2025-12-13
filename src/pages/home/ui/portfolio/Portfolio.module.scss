@@ -1,0 +1,69 @@
+.portfolio {
+    overflow: hidden;
+
+    &-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+    }
+
+    &-title {
+        @include h2-desktop;
+        text-transform: uppercase;
+        letter-spacing: 0.26em;
+    }
+
+    &-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 400px 200px 400px 400px 200px 400px;
+        gap: 20px;
+
+        .gallery-item {
+            overflow: hidden;
+            opacity: 0; // Начальная прозрачность для анимации
+            will-change: transform, opacity; // Оптимизация производительности
+
+            & > img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                transition: transform 0.3s ease; // Для ховер-эффекта
+            }
+
+            // Ховер эффект
+            &:hover > img {
+                transform: scale(1.05);
+            }
+        }
+
+        // Позиционирование в гриде
+        .gallery-item:nth-child(1) {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+        .gallery-item:nth-child(2) {
+            grid-area: 1 / 2 / 3 / 3;
+        }
+        .gallery-item:nth-child(3) {
+            grid-area: 2 / 1 / 4 / 2;
+        }
+        .gallery-item:nth-child(4) {
+            grid-area: 3 / 2 / 4 / 3;
+        }
+        .gallery-item:nth-child(5) {
+            grid-area: 4 / 1 / 5 / 2;
+        }
+        .gallery-item:nth-child(6) {
+            grid-area: 4 / 2 / 6 / 3;
+        }
+        .gallery-item:nth-child(7) {
+            grid-area: 5 / 1 / 7 / 2;
+        }
+        .gallery-item:nth-child(8) {
+            grid-area: 6 / 2 / 7 / 3;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+.skeleton {
+   background: var(--color-background-base);
+   overflow: hidden;
+   display: inline-block;
+   animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.text {
+   border-radius: var(--radius-sm);
+}
+.field {
+   border-radius: var(--radius-md);
+}
+.circle {
+   border-radius: var(--radius-all);
+   aspect-ratio: 1/1;
+}
+.semicircle {
+   border-radius: var(--radius-all) var(--radius-all) 0 0;
+   aspect-ratio: 2/1;
+}
+
+@keyframes shimmer {
+   0% {
+      background: var(--color-border-default);
+   }
+   50% {
+      background: var(--color-border-light);
+   }
+   100% {
+      background: var(--color-border-default);
+   }
+}

@@ -1,0 +1,38 @@
+@mixin h1-desktop {
+   font-size: 90px;
+   font-weight: 700;
+   line-height: 100%;
+}
+
+@mixin h2-desktop {
+   font-size: 40px;
+   font-weight: 300;
+   line-height: 125%;
+}
+
+
+@mixin h1-tablet {
+   font-size: 50px;
+   font-weight: 700;
+   line-height: 100%;
+}
+
+@mixin h2-tablet {
+   font-size: 30px;
+   font-weight: 300;
+   line-height: 125%;
+}
+
+
+@mixin h1-phone {
+   font-size: 30px;
+   font-weight: 700;
+   line-height: 100%;
+}
+
+@mixin h2-phone {
+   font-size: 22px;
+   font-weight: 300;
+   line-height: 125%;
+}
+

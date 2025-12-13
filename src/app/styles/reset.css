@@ -1,0 +1,202 @@
+/* Reset and base styles */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+   line-height: 1;
+   -webkit-text-size-adjust: 100%;
+   text-size-adjust: 100%;
+   -webkit-tap-highlight-color: transparent;
+}
+
+body {
+   margin: 0;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   line-height: 1;
+}
+
+* {
+   margin-bottom: 0;
+}
+
+/* Remove default margin and padding */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+   display: block;
+}
+
+/* Headings */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-size: inherit;
+   font-weight: inherit;
+   margin: 0;
+   margin-bottom: 0;
+}
+
+/* Lists */
+ol,
+ul {
+   list-style: none;
+}
+
+/* Links */
+a {
+   background-color: transparent;
+   text-decoration: none;
+   color: inherit;
+}
+
+/* Forms */
+button,
+input,
+optgroup,
+select,
+textarea {
+   font-family: inherit;
+   font-size: 100%;
+   line-height: 1;
+   margin: 0;
+   border: none;
+   background: none;
+   outline: none;
+}
+
+button {
+   cursor: pointer;
+   overflow: visible;
+   text-transform: none;
+}
+
+input,
+textarea {
+   overflow: visible;
+}
+
+/* Remove default button styles */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+   -webkit-appearance: button;
+   appearance: button;
+}
+
+/* Remove inner border and padding in Firefox */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+   border-style: none;
+   padding: 0;
+}
+
+/* Remove default fieldset styles */
+fieldset {
+   border: 0;
+   margin: 0;
+   padding: 0;
+}
+
+/* Remove default table styles */
+table {
+   border-collapse: collapse;
+   border-spacing: 0;
+}
+
+/* Images */
+img {
+   border-style: none;
+   max-width: 100%;
+   height: auto;
+   display: block;
+}
+
+/* Code */
+code,
+kbd,
+samp,
+pre {
+   font-family: monospace, monospace;
+   font-size: 1em;
+}
+
+/* Remove quotes from quotes */
+blockquote,
+q {
+   quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+   content: "";
+   content: none;
+}
+
+/* Hidden attribute */
+[hidden] {
+   display: none;
+}
+
+/* Remove default focus styles (add your own later) */
+:focus {
+   outline: 0;
+}
+
+/* Remove touch highlight on mobile */
+* {
+   -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove spin buttons from number inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+input[type="number"] {
+   -moz-appearance: textfield;
+   appearance: textfield;
+}
+
+/* Remove autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+   transition: background-color 5000s ease-in-out 0s;
+}
+
+p {
+   margin-bottom: 0;
+}

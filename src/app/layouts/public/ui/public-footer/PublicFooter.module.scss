@@ -1,0 +1,22 @@
+.footer {
+   background: var(--color-background-controls);
+   padding: 28px 0;
+}
+
+.content {
+   display: flex;
+   align-items: start;
+   justify-content: space-between;
+}
+
+.left {
+   display: flex;
+   align-items: start;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.disclamer {
+   @include text;
+   color: var(--color-icons-control);
+}

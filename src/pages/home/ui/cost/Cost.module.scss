@@ -1,0 +1,113 @@
+
+.cost {
+    position: relative;
+    height: 900px;
+    overflow: hidden;
+    background-color: var(--color-background-secondary);
+    
+    &-content {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        height: 100%;
+    }
+
+    &-title {
+        @include h2-desktop;
+        text-transform: uppercase;
+        letter-spacing: 12px;
+        max-width: 380px;
+        margin-bottom: 40px;
+    }
+
+    &-desc {
+        font-size: 16px;
+        line-height: 26px;
+        max-width: 480px;
+        color: var(--color-text-light);
+        margin-bottom: 105px;
+    }
+
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        gap: 20px;
+    }
+
+    &-card {
+        padding: 40px 40px 50px 40px;
+        background-color: var(--color-background-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &-icon {
+            margin-bottom: 30px;
+        }
+
+        &-title {
+            margin-bottom: 27px;
+            text-transform: uppercase;
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 600;
+        }
+
+        &-price {
+            font-family: "Prata";
+            & > span {
+                font-size: 24px;
+                line-height: 32px;
+                
+                & > span {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    
+    // Начальная позиция (можно установить через GSAP, но лучше в CSS для FOUT)
+    transform: translateX(-100%);
+    
+    &-1 {
+      background-color: #756ed1;
+      z-index: 2;
+    }
+    
+    &-2 {
+      background-color: #3498db;
+      z-index: 3;
+    }
+
+    &-3 {
+      background-color: #69dfa8;
+      z-index: 4;
+    }
+    
+    &-4 {
+      background-color: var(--color-background-secondary);
+      z-index: 5;
+    }
+}

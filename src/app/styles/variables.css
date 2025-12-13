@@ -1,0 +1,30 @@
+:root {
+   /* color */
+   --color-text-primary: #222222;
+   --color-text-light: #666666;
+   --color-text-soft: #999999;
+   --color-text-button: #FFFFFF;
+   --color-background-button: #222222;
+   --color-background-primary: #FFFFFF;
+   --color-background-secondary: #F4F4F4;
+   --color-border-primary: #222222;
+
+   /* border-radius */
+   --radius-none: 0;
+   --radius-all: 9999px;
+
+   /* font-size */
+   --font-size-5xs: 12px;
+   --font-size-4xs: 14px;
+   --font-size-3xs: 16px;
+   --font-size-2xs: 18px;
+   --font-size-xs: 20px;
+   --font-size-s: 22px;
+   --font-size-m: 24px;
+   --font-size-l: 30px;
+   --font-size-xl: 34px;
+   --font-size-2xl: 40px;
+   --font-size-3xl: 50px;
+   --font-size-4xl: 60px;
+   --font-size-5xl: 90px;
+}
