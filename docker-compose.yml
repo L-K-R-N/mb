@@ -1,0 +1,16 @@
+version: '3.8'  # можно убрать эту строку, как советует warning
+
+services:
+  frontend:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npx vite --host 0.0.0.0  # ← Измените эту строку
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true

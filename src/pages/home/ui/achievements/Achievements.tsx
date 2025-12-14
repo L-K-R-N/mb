@@ -20,6 +20,7 @@ const Achievements = () => {
   }, [ACHIEVEMENTS_LIST.length]);
 
   useEffect(() => {
+
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
