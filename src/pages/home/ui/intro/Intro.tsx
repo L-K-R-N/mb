@@ -1,4 +1,5 @@
 import INTRO_JPG from '@/shared/assets/intro.jpg';
+import useDeviceType from '@/shared/hooks/useDeviceType';
 import { Button } from "@/shared/ui/button";
 import { Wrapper } from "@/shared/ui/wrapper";
 import clsx from "clsx";
@@ -7,39 +8,62 @@ import { useEffect, useRef } from "react";
 import styles from "./Intro.module.scss";
 
 const Intro = () => {
-   const overlay1Ref = useRef<HTMLDivElement>(null);
+  const overlay1Ref = useRef<HTMLDivElement>(null);
   const overlay2Ref = useRef<HTMLDivElement>(null);
   const overlay3Ref = useRef<HTMLDivElement>(null);
   const overlay4Ref = useRef<HTMLDivElement>(null);
+  const deviceType = useDeviceType();
 
   useEffect(() => {
     const tl = gsap.timeline();
-    
-    tl.fromTo(overlay1Ref.current, 
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" },
-      "=-0.1"
-    )
-    .fromTo(overlay2Ref.current,
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" },
-      "=-0.85" // Начинать немного раньше
-    )
-    .fromTo(overlay3Ref.current,
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" },
-      "=-0.85"
-    )
-    .fromTo(overlay4Ref.current,
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" },
-      "=-0.85"
-    );
+    if (deviceType === 'mobile' || deviceType === 'tablet') {
+      tl.fromTo(overlay1Ref.current, 
+        { y: '-100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.1"
+      )
+      .fromTo(overlay2Ref.current,
+        { y: '-100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      )
+      .fromTo(overlay3Ref.current,
+        { y: '-100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      )
+      .fromTo(overlay4Ref.current,
+        { y: '-100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      );
+    } else {
+      tl.fromTo(overlay1Ref.current, 
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.1"
+      )
+      .fromTo(overlay2Ref.current,
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      )
+      .fromTo(overlay3Ref.current,
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      )
+      .fromTo(overlay4Ref.current,
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      );
+    }
 
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [deviceType]);
 
   return (
     <div className={styles.intro}>
@@ -50,7 +74,7 @@ const Intro = () => {
       <img className={styles["bg-image"]} src={INTRO_JPG} alt="" />
       <Wrapper className={styles["intro-content"]}>
         <h2 className={styles.intro__subtitle}>максим браун</h2>
-        <h1 className={styles.intro__title}>фотограф <span><span>в</span>москве</span></h1>
+        <h1 className={styles.intro__title}>фотограф<span><span>в</span>москве</span></h1>
         <p className={styles.intro__slogan}>Нестандартные фотографии, которые помогут вам выделиться из толпы</p>
         <Button>записаться</Button>
       </Wrapper>

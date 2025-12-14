@@ -1,24 +1,67 @@
+// import clsx from "clsx";
+// import { useNavigate } from "react-router-dom";
+
+
+// import { BurgerIcon, LogoIcon } from "@/shared/ui/icon";
+// import { Wrapper } from "@/shared/ui/wrapper";
+// import { SOCIAL_LINKS } from "../../model/constants";
+// import styles from "./PublicHeader.module.scss";
+
+// interface PublicHeaderProps {
+// }
+
+// export const PublicHeader = ({}: PublicHeaderProps) => {
+//    const navigate = useNavigate();
+
+//    return (
+//       <header className={clsx(styles.header)}>
+//          <BurgerIcon className={styles.burger}/>
+//          <Wrapper className={styles["header-content"]}>
+//             <LogoIcon/>
+//             <div className={styles.socials}>
+//                {SOCIAL_LINKS.map((link, index) => 
+//                   <a key={index} href={link.href}>
+//                      {link.icon}
+//                   </a>
+//                )}
+//             </div>
+//          </Wrapper>
+//       </header>
+//    );
+// };
+
+// components/PublicHeader/PublicHeader.tsx
+import BurgerMenu from "@/shared/ui/burger-menu/BurgerMenu"; // Путь к твоему бургер меню
+import { LogoIcon } from "@/shared/ui/icon";
+import { Wrapper } from "@/shared/ui/wrapper";
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
-
-import { Button } from "@/shared/ui/button";
-import { Wrapper } from "@/shared/ui/wrapper/ui/Wrapper";
-
-import { NavigationMenu } from "./navigation-menu/ui/NavigationMenu";
+import { SOCIAL_LINKS } from "../../model/constants";
 import styles from "./PublicHeader.module.scss";
 
 interface PublicHeaderProps {
-   isHome?: boolean;
 }
 
-export const PublicHeader = ({ isHome }: PublicHeaderProps) => {
+export const PublicHeader = ({}: PublicHeaderProps) => {
    const navigate = useNavigate();
+
+   const handleMenuItemClick = (path: string) => {
+      navigate(path);
+   };
 
    return (
       <header className={clsx(styles.header)}>
-         <Wrapper className={styles.header__content}>
-            {isHome && <NavigationMenu />}
-            <Button onClick={() => navigate("/login")}>{isHome ? "Войти в кабинет" : "Регистрация"}</Button>
+         <BurgerMenu onItemClick={handleMenuItemClick} />
+         {/* <BurgerIcon/> */}
+         <Wrapper className={styles["header-content"]}>
+            <LogoIcon className={styles.logo}/>
+            <div className={styles.socials}>
+               {SOCIAL_LINKS.map((link, index) => 
+                  <a key={index} href={link.href}>
+                     {link.icon}
+                  </a>
+               )}
+            </div>
          </Wrapper>
       </header>
    );

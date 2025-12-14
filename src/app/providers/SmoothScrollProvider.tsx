@@ -7,7 +7,6 @@ interface SmoothScrollProviderProps {
 
 const SmoothScrollProvider = ({ children }: SmoothScrollProviderProps) => {
   useEffect(() => {
-    // Опционально: можно отключить скроллбар
     const style = document.createElement('style');
     style.textContent = `
       .lenis.lenis-smooth [data-lenis-prevent] {
@@ -38,16 +37,16 @@ const SmoothScrollProvider = ({ children }: SmoothScrollProviderProps) => {
     <ReactLenis
       root
       options={{
-        duration: 1.2, // Длительность анимации
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Кастомная easing функция
-        orientation: "vertical", // Вертикальный скролл
-        gestureOrientation: "vertical", // Для мобильных
-        smoothWheel: true, // Плавный скролл колесиком
-        wheelMultiplier: 1, // Чувствительность колесика
-        touchMultiplier: 2, // Чувствительность тача
-        infinite: false, // Бесконечный скролл
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+        orientation: "vertical", 
+        gestureOrientation: "vertical", 
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2, 
+        infinite: false, 
       }}
-      autoRaf={true} // Автоматический requestAnimationFrame
+      autoRaf={true} 
     >
       {children}
     </ReactLenis>

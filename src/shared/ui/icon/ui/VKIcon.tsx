@@ -3,7 +3,7 @@ import type { TBaseIconProps } from "../model/types";
 export const VKIcon = ({ color = "#222222", width = 24, height = 24, className }: TBaseIconProps) => {
    return (
         <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <mask id="mask0_88_635" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+            <mask id="mask0_88_635" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
             <rect width="24" height="24" fill="#C4C4C4"/>
             </mask>
             <g mask="url(#mask0_88_635)">

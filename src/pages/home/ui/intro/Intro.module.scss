@@ -4,6 +4,20 @@
     height: 900px;
     overflow: hidden;
     background-color: var(--color-background-secondary);
+
+    @media (max-width: 800px) {
+        background: transparent;
+        height: auto;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 60px;
+        padding: 0 50px;
+    }
+
+    @media (max-width: 400px) {
+        gap: 40px;
+        padding: 0;
+    }
     
     &-content {
         position: relative;
@@ -11,8 +25,21 @@
         display: flex;
         flex-direction: column;
         align-items: start;
-        justify-content: center;
+        justify-content: start;
+        padding-top: 210px;
         height: 100%;
+        
+
+        @media (max-width: 800px) {
+            margin: 0;
+            align-items: center;
+            padding-top: 115px;
+        }
+        @media (max-width: 400px) {
+            margin: 0;
+            align-items: center;
+            padding: 90px 20px 0;
+        }
     }
 
     &__subtitle {
@@ -21,6 +48,20 @@
         letter-spacing: 12px;
         max-width: 380px;
         margin-bottom: 30px;
+
+        @media (max-width: 800px) {
+            text-align: center;
+            max-width: none;
+            font-size: 30px;
+            letter-spacing: 6px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 12px;
+            letter-spacing: 3px;
+        }
     }
 
     &__title {
@@ -34,13 +75,44 @@
         flex-direction: column;
         gap: 14px;
         margin-bottom: 40px;
+        
+
+        @media (max-width: 800px) {
+            text-align: center;
+            max-width: none;
+            font-size: 50px;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 23px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 30px;
+            line-height: 30px;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+        }
 
         & > span {
             display: flex;
             align-items: center;
-
+            
             & > span {
                 font-size: 40px;
+            }
+            @media (max-width: 800px) {
+                justify-content: center;
+                
+                & > span {
+                    font-size: 20px;
+                }
+            }
+
+             @media (max-width: 400px) {
+                
+                & > span {
+                    font-size: 14px;
+                }
             }
         }
     }
@@ -52,6 +124,18 @@
         max-width: 380px;
         letter-spacing: 0.05em;
         margin-bottom: 46px;
+
+        @media (max-width: 800px) {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        @media (max-width: 400px) {
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0;
+        }
     }
 }
 
@@ -62,6 +146,13 @@
     width: 50%;
     height: 100%;
     object-fit: cover;
+
+    @media (max-width: 800px) {
+        position: relative;
+        width: 100%;
+        z-index: 6;
+        aspect-ratio: 1 / 1;
+    }
 }
 
 
@@ -71,9 +162,7 @@
     left: 0;
     height: 100%;
     width: 50%;
-    
-    // Начальная позиция (можно установить через GSAP, но лучше в CSS для FOUT)
-    transform: translateX(-100%);
+   
     
     &-1 {
       background-color: #756ed1;
@@ -93,5 +182,11 @@
     &-4 {
       background-color: var(--color-background-secondary);
       z-index: 5;
+    }
+
+    @media (max-width: 800px) {
+        transform: translateX(0);
+        width: 100%;
+        height: 75%;
     }
 }

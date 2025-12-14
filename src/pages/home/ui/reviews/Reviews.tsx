@@ -13,19 +13,16 @@ const Reviews = () => {
   const reviewRefs = useRef<Array<HTMLDivElement | null>>([]);
   const listRef = useRef<HTMLDivElement>(null);
 
-  // Инициализируем рефы для отзывов
   useEffect(() => {
     reviewRefs.current = reviewRefs.current.slice(0, REVIEWS_LIST.length);
   }, [REVIEWS_LIST.length]);
 
   useEffect(() => {
-    // Проверяем, не отключены ли анимации
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
     if (prefersReducedMotion) {
-      // Если анимации отключены, сразу показываем все элементы
       gsap.set([titleRef.current, ...reviewRefs.current], {
         y: 0,
         opacity: 1
@@ -33,7 +30,6 @@ const Reviews = () => {
       return;
     }
 
-    // 1. Анимация для заголовка
     gsap.fromTo(titleRef.current,
       {
         y: 50,
@@ -54,7 +50,6 @@ const Reviews = () => {
       }
     );
 
-    // 2. Анимация для отзывов - появляются по очереди
     reviewRefs.current.forEach((ref, index) => {
       if (!ref) return;
 
@@ -70,7 +65,7 @@ const Reviews = () => {
           scale: 1,
           duration: 0.7,
           ease: "power3.out",
-          delay: index * 0.15, // Задержка для каждого следующего отзыва
+          delay: index * 0.15,
           scrollTrigger: {
             trigger: listRef.current,
             start: "top 80%",
@@ -88,7 +83,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className={styles.reviews} ref={sectionRef}>
+    <div className={styles.reviews} ref={sectionRef} id="reviews">
       <Wrapper className={styles["reviews-content"]}>
         <h2 ref={titleRef} className={styles["reviews-title"]}>
           отзывы
@@ -96,7 +91,9 @@ const Reviews = () => {
         <div ref={listRef} className={styles["reviews-list"]}>
           {REVIEWS_LIST.map((review, index) => (
             <div 
-              ref={el => reviewRefs.current[index] = el}
+              ref={(el) => {
+                reviewRefs.current[index] = el
+              }}
               className={styles.review} 
               key={index}
             >

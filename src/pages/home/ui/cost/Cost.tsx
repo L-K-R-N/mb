@@ -1,4 +1,5 @@
 import COST_JPG from '@/shared/assets/cost.jpg';
+import useDeviceType from '@/shared/hooks/useDeviceType';
 import { Wrapper } from "@/shared/ui/wrapper";
 import clsx from "clsx";
 import gsap from "gsap";
@@ -16,63 +17,84 @@ const Cost = () => {
   const overlay3Ref = useRef<HTMLDivElement>(null);
   const overlay4Ref = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const deviceType = useDeviceType();
 
   useEffect(() => {
-    // Проверяем, не отключены ли анимации у пользователя
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
     if (prefersReducedMotion) {
-      // Если анимации отключены, сразу показываем оверлеи
       gsap.set([overlay1Ref.current, overlay2Ref.current, overlay3Ref.current, overlay4Ref.current], {
         x: '0%'
       });
       return;
     }
 
-    // Создаем таймлайн с ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: sectionRef.current, // Блок, который триггерит анимацию
-        start: "top 80%", // Начинать анимацию когда верх блока на 80% от верха окна
-        end: "bottom 20%", // Можно настроить по желанию
-        once: true, // Анимация сработает только один раз
-        toggleActions: "play none none none", // Только play при входе
-        // markers: true, // Раскомментируй для отладки (покажет маркеры на странице)
+        trigger: sectionRef.current,
+        start: "top 80%", 
+        end: "bottom 20%", 
+        once: true, 
+        toggleActions: "play none none none", 
       }
     });
     
-    // Последовательная анимация оверлеев
-    tl.fromTo(overlay1Ref.current, 
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" }
-    )
-    .fromTo(overlay2Ref.current,
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" },
-      "-=0.85" // Начинать раньше окончания предыдущей
-    )
-    .fromTo(overlay3Ref.current,
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" },
-      "-=0.85"
-    )
-    .fromTo(overlay4Ref.current,
-      { x: '-100%' },
-      { x: '0%', duration: 1, ease: "expo.inOut" },
-      "-=0.85"
-    );
+    if (deviceType === 'mobile' ||  deviceType === 'tablet') {
+      
+
+      tl.fromTo(overlay1Ref.current, 
+        { y: '100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.1"
+      )
+      .fromTo(overlay2Ref.current,
+        { y: '100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      )
+      .fromTo(overlay3Ref.current,
+        { y: '100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      )
+      .fromTo(overlay4Ref.current,
+        { y: '100%' },
+        { y: '0%', duration: 1, ease: "expo.inOut" },
+        "=-0.85"
+      );
+    } else {
+      tl.fromTo(overlay1Ref.current, 
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" }
+      )
+      .fromTo(overlay2Ref.current,
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" },
+        "-=0.85" 
+      )
+      .fromTo(overlay3Ref.current,
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" },
+        "-=0.85"
+      )
+      .fromTo(overlay4Ref.current,
+        { x: '-100%' },
+        { x: '0%', duration: 1, ease: "expo.inOut" },
+        "-=0.85"
+      );
+    }
+    
 
     return () => {
-      // Очищаем все ScrollTrigger'ы при размонтировании
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       tl.kill();
     };
-  }, []);
+  }, [deviceType]);
 
   return (
-    <div className={styles.cost} ref={sectionRef}>
+    <div className={styles.cost} ref={sectionRef} id='cost'>
       <div ref={overlay1Ref} className={clsx(styles.overlay, styles["overlay-1"])} />
       <div ref={overlay2Ref} className={clsx(styles.overlay, styles["overlay-2"])} />
       <div ref={overlay3Ref} className={clsx(styles.overlay, styles["overlay-3"])} />
@@ -85,8 +107,10 @@ const Cost = () => {
           {COST_LIST.map((item) =>
             <li className={styles["cost-card"]}>
               <span className={styles["cost-card-icon"]}>{item.icon}</span>
-              <span className={styles["cost-card-title"]}>{item.title}</span>
-              <span className={styles["cost-card-price"]}>{item.cost}</span>
+              <div className={styles["cost-card-info"]}>
+                <span className={styles["cost-card-title"]}>{item.title}</span>
+                <span className={styles["cost-card-price"]}>{item.cost}</span>
+              </div>
             </li>
           )}
         </ul>

@@ -1,22 +1,39 @@
 .footer {
-   background: var(--color-background-controls);
-   padding: 28px 0;
-}
+   padding: 60px 0;
 
-.content {
-   display: flex;
-   align-items: start;
-   justify-content: space-between;
+   @media (max-width: 800px) {
+      padding: 33px 0;
+   }
+
+   &-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: 800px) {
+         flex-direction: column;
+         gap: 10px;
+      }
+   }
 }
 
 .left {
    display: flex;
-   align-items: start;
-   flex-direction: column;
-   gap: 20px;
+   align-items: center;
+   gap: 100px;
+
+   @media (max-width: 800px) {
+      flex-direction: column;
+      gap: 10px;
+   }
 }
 
-.disclamer {
-   @include text;
-   color: var(--color-icons-control);
+.text {
+   font-size: 12px;
+   line-height: 18px;
+   color: var(--color-text-soft);
+}
+
+.privacy:hover {
+   color: #d4a574;
 }

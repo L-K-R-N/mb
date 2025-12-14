@@ -1,118 +1,16 @@
 
-// .cursor {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 10px; // Маленькая точка
-//   height: 10px;
-//   border-radius: 50%;
-//   pointer-events: none;
-//   z-index: 9999;
-//   transform: translate(-50%, -50%);
-//   transition: 
-//     background-color 0.15s ease,
-//     border-color 0.15s ease,
-//     box-shadow 0.15s ease;
-//   will-change: transform, opacity;
-  
-//   &.visible {
-//     opacity: 1;
-//   }
-  
-//   &:not(.visible) {
-//     opacity: 0;
-//     transition: opacity 0.3s ease;
-//   }
-  
-//   // Темный курсор (для светлых фонов)
-//   &.dark {
-//     background-color: #000000;
-//     border: 1px solid #000000;
-//     box-shadow: 
-//       0 0 0 1px rgba(255, 255, 255, 0.8),
-//       0 0 0 2px rgba(0, 0, 0, 0.3),
-//       0 0 10px rgba(0, 0, 0, 0.5);
-    
-//     // Увеличение при наведении на интерактивные элементы
-//     &:hover {
-//       transform: translate(-50%, -50%) scale(1.5);
-//     }
-//   }
-  
-//   // Светлый курсор (для темных фонов)
-//   &.light {
-//     background-color: #ffffff;
-//     border: 1px solid #ffffff;
-//     box-shadow: 
-//       0 0 0 1px rgba(0, 0, 0, 0.8),
-//       0 0 0 2px rgba(255, 255, 255, 0.3),
-//       0 0 10px rgba(255, 255, 255, 0.5);
-    
-//     &:hover {
-//       transform: translate(-50%, -50%) scale(1.5);
-//     }
-//   }
-  
-//   // Эффект клика
-//   &:active {
-//     transform: translate(-50%, -50%) scale(0.8);
-//   }
-// }
 
-// // Скрываем стандартный курсор только на десктопах
-// @media (hover: hover) and (pointer: fine) {
-//   html,
-//   body,
-//   body * {
-//     cursor: none !important;
-//   }
-  
-//   // Исключения (можно добавить больше при необходимости)
-//   input:hover,
-//   textarea:hover,
-//   [contenteditable="true"]:hover,
-//   input:focus,
-//   textarea:focus,
-//   [contenteditable="true"]:focus {
-//     cursor: text !important;
-    
-//     & ~ .cursor {
-//       opacity: 0 !important;
-//     }
-//   }
-// }
-
-// // На мобильных показываем стандартный курсор
-// @media (hover: none) and (pointer: coarse) {
-//   .cursor {
-//     display: none !important;
-//   }
-  
-//   html,
-//   body,
-//   body * {
-//     cursor: auto !important;
-//   }
-// }
-
-// shared/ui/custom-cursor/CustomCursor.module.scss
 .cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 14px; // Еще меньше
+  width: 14px; 
   height: 14px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-//   transition: 
-//     left 0.05s linear,
-//     top 0.05s linear,
-//     background-color 0.1s ease,
-//     border-color 0.1s ease,
-//     box-shadow 0.1s ease,
-//     opacity 0.2s ease;
+
   
   &.visible {
     opacity: 1;
@@ -122,7 +20,6 @@
     opacity: 0;
   }
   
-  // Темный курсор (для светлых фонов)
   &.dark {
     background-color: rgba(0, 0, 0, 0.95);
     border: 1.5px solid rgba(255, 255, 255, 0.95);
@@ -130,7 +27,6 @@
       0 0 0 1px rgba(0, 0, 0, 0.8),
       0 0 8px rgba(0, 0, 0, 0.6);
     
-    // Центральная точка
     &::after {
       content: '';
       position: absolute;
@@ -144,7 +40,6 @@
     }
   }
   
-  // Светлый курсор (для темных фонов)
   &.light {
     background-color: rgba(255, 255, 255, 0.95);
     border: 1.5px solid rgba(0, 0, 0, 0.95);
@@ -165,7 +60,6 @@
     }
   }
   
-  // Эффект при наведении на интерактивные элементы
   body:not(.touch-device) a:hover ~ &,
   body:not(.touch-device) button:hover ~ &,
   body:not(.touch-device) [role="button"]:hover ~ & {
@@ -191,13 +85,11 @@
     }
   }
   
-  // Эффект клика
   &:active {
     transform: translate(-50%, -50%) scale(0.7);
   }
 }
 
-// Скрываем стандартный курсор только на десктопах
 @media (hover: hover) and (pointer: fine) {
   html,
   body,
@@ -205,7 +97,6 @@
     cursor: none !important;
   }
   
-  // Исключения для инпутов
   input,
   textarea,
   [contenteditable="true"],
@@ -219,7 +110,6 @@
   }
 }
 
-// На мобильных показываем стандартный курсор
 @media (hover: none) and (pointer: coarse) {
   .cursor {
     display: none !important;

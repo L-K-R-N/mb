@@ -53,6 +53,7 @@ h6 {
    font-weight: inherit;
    margin: 0;
    margin-bottom: 0;
+  
 }
 
 /* Lists */
@@ -200,3 +201,7 @@ select:-webkit-autofill:focus {
 p {
    margin-bottom: 0;
 }
+/* 
+* {
+    mix-blend-mode: ;
+} */

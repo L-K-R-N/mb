@@ -15,19 +15,16 @@ const Achievements = () => {
   const achievementItemsRefs = useRef<Array<HTMLLIElement | null>>([]);
   const listRef = useRef<HTMLUListElement>(null);
 
-  // Инициализируем рефы для элементов списка
   useEffect(() => {
     achievementItemsRefs.current = achievementItemsRefs.current.slice(0, ACHIEVEMENTS_LIST.length);
   }, [ACHIEVEMENTS_LIST.length]);
 
   useEffect(() => {
-    // Проверяем, не отключены ли анимации
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
     if (prefersReducedMotion) {
-      // Если анимации отключены, сразу показываем все элементы
       gsap.set([descRef.current, imageRef.current, ...achievementItemsRefs.current], {
         y: 0,
         opacity: 1
@@ -35,7 +32,6 @@ const Achievements = () => {
       return;
     }
 
-    // 1. Анимация для описания (выезжает снизу)
     gsap.fromTo(descRef.current,
       {
         y: 80,
@@ -56,7 +52,6 @@ const Achievements = () => {
       }
     );
 
-    // 2. Анимация для фотографии (выезжает снизу с задержкой)
     gsap.fromTo(imageRef.current,
       {
         y: 100,
@@ -80,7 +75,6 @@ const Achievements = () => {
       }
     );
 
-    // 3. Анимация для списка достижений (каждый элемент по очереди)
     achievementItemsRefs.current.forEach((ref, index) => {
       if (!ref) return;
 
@@ -96,7 +90,7 @@ const Achievements = () => {
           scale: 1,
           duration: 0.7,
           ease: "back.out(1.4)",
-          delay: index * 0.15, // Задержка для каждого следующего элемента
+          delay: index * 0.15, 
           scrollTrigger: {
             trigger: listRef.current,
             start: "top 80%",
@@ -114,7 +108,7 @@ const Achievements = () => {
   }, []);
 
   return (
-    <div className={styles.achievements} ref={sectionRef}>
+    <div className={styles.achievements} ref={sectionRef} id='about'>
       <Wrapper className={styles["achievements-content"]}>
         <p ref={descRef} className={styles.achievements__desc}>
           Услуги профессионального фотографа, привлечение к съемкам лучших специалистов. 
@@ -131,7 +125,9 @@ const Achievements = () => {
           <ul ref={listRef} className={styles.achievements__list}>
             {ACHIEVEMENTS_LIST.map((achievement, index) => (
               <li 
-                ref={el => achievementItemsRefs.current[index] = el}
+                ref={(el) => {
+                  achievementItemsRefs.current[index] = el
+                }}
                 className={styles.achievement} 
                 key={index}
               >

@@ -10,7 +10,6 @@ const CursorProvider = ({ children, enabled = true }: CursorProviderProps) => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    // Проверяем, тач-ли устройство
     const checkTouchDevice = () => {
       return (
         'ontouchstart' in window ||
@@ -22,7 +21,6 @@ const CursorProvider = ({ children, enabled = true }: CursorProviderProps) => {
     setIsTouchDevice(checkTouchDevice());
   }, []);
 
-  // Не показываем кастомный курсор на тач-устройствах
   if (!enabled || isTouchDevice) {
     return <>{children}</>;
   }
@@ -31,7 +29,6 @@ const CursorProvider = ({ children, enabled = true }: CursorProviderProps) => {
     <>
       {children}
       <CustomCursor />
-      {/* <PixelPerfectCursor /> */}
     </>
   );
 };

@@ -1,0 +1,95 @@
+// shared/ui/burger-menu/BurgerMenu.module.scss
+.burgerMenu {
+  position: relative;
+}
+
+.burger {
+  position: absolute;
+  top: 100%;
+  left: 60px;
+//   transform: translateY(-50%);
+  width: 30px;
+  height: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 101;
+
+  @media (max-width: 800px) {
+    top: 10px;
+    left: 50px;
+  }
+
+  @media (max-width: 400px) {
+    top: 10px;
+    left: 20px;
+  }
+}
+
+.line {
+  width: 24px;
+  height: 2px;
+  background-color: #000000;
+  display: block;
+  border-radius: 99px;
+}
+
+.menu {
+  position: fixed;
+  top: 50%;
+  left: 65px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  z-index: 100;
+
+  @media (max-width: 800px) {
+    left: 55px;
+  }
+  @media (max-width: 400px) {
+    left: 25px;
+  }
+}
+
+.menuItem {
+  cursor: pointer;
+  position: relative;
+  
+  // ВЕРТИКАЛЬНЫЙ ТЕКСТ БЕЗ TRANSFORM
+  // Текст идет сверху вниз
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  height: auto;
+  
+  &:hover {
+    .text {
+      &::after {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.text {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    right: 20px; // Линия справа от текста
+    top: 0;
+    width: 1px;
+    height: 0;
+    background-color: #727272;
+    transition: height 0.3s ease;
+  }
+}

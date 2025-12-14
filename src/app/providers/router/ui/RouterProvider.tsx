@@ -5,7 +5,6 @@ import { PublicLayout } from "@/app/layouts/public";
 import HomePage from "@/pages/home/ui/HomePage";
 import { Loader } from "@/shared/ui/loader";
 
-import { ROUTE_PATHS } from "../model/route-paths";
 
 export const AppRouter = () => {
    return (
@@ -13,7 +12,7 @@ export const AppRouter = () => {
          <Suspense fallback={<Loader />}>
             <Routes>
                <Route element={<PublicLayout />}>
-                  <Route element={<HomePage />} path={ROUTE_PATHS.main} />
+                  <Route element={<HomePage />} path={"/"} />
                </Route>
                <Route path="*" element={<HomePage />} />
             </Routes>

@@ -7,12 +7,20 @@
         flex-direction: column;
         align-items: center;
         gap: 60px;
+
+        @media (max-width: 800px) {
+            gap: 50px;
+        }
+
+        @media (max-width: 400px) {
+            gap: 30px;
+        }
     }
 
     &-title {
         @include h2-desktop;
         text-transform: uppercase;
-        letter-spacing: 0.26em;
+        
     }
 
     &-gallery {
@@ -20,27 +28,31 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 400px 200px 400px 400px 200px 400px;
         gap: 20px;
+        width: 100%;
+
+        @media (max-width: 800px) {
+            grid-template-rows: 220px 120px 220px 220px 120px 220px;
+        }
+        
 
         .gallery-item {
             overflow: hidden;
-            opacity: 0; // Начальная прозрачность для анимации
-            will-change: transform, opacity; // Оптимизация производительности
+            opacity: 0;
+            will-change: transform, opacity;
 
             & > img {
                 object-fit: cover;
                 width: 100%;
                 height: 100%;
                 pointer-events: none;
-                transition: transform 0.3s ease; // Для ховер-эффекта
+                transition: transform 0.3s ease;
             }
 
-            // Ховер эффект
             &:hover > img {
                 transform: scale(1.05);
             }
         }
 
-        // Позиционирование в гриде
         .gallery-item:nth-child(1) {
             grid-area: 1 / 1 / 2 / 2;
         }
@@ -64,6 +76,37 @@
         }
         .gallery-item:nth-child(8) {
             grid-area: 6 / 2 / 7 / 3;
+        }
+
+        @media (max-width: 400px) {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: 235px 360px 360px 235px 235px 360px 360px 235px;
+            gap: 2px;
+
+            .gallery-item:nth-child(1) {
+                grid-area: 1 / 1 / 2 / 2;
+            }
+            .gallery-item:nth-child(2) {
+                grid-area: 2 / 1 / 3 / 2;
+            }
+            .gallery-item:nth-child(3) {
+                grid-area: 3 / 1 / 4 / 2;
+            }
+            .gallery-item:nth-child(4) {
+                grid-area: 4 / 1 / 5 / 2;
+            }
+            .gallery-item:nth-child(5) {
+                grid-area: 5 / 1 / 6 / 2;
+            }
+            .gallery-item:nth-child(6) {
+                grid-area: 6 / 1 / 7 / 2;
+            }
+            .gallery-item:nth-child(7) {
+                grid-area: 7 / 1 / 8 / 2;
+            }
+            .gallery-item:nth-child(8) {
+                grid-area: 8 / 1 / 9 / 2;
+            }
         }
     }
 }

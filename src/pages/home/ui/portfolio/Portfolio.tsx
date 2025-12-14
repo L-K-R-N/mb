@@ -11,19 +11,16 @@ const Portfolio = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<Array<HTMLDivElement | null>>([]);
 
-  // Инициализируем рефы для каждой фотографии
   useEffect(() => {
     imageRefs.current = imageRefs.current.slice(0, PORTFOLIO_IMAGES.length);
   }, [PORTFOLIO_IMAGES.length]);
 
   useEffect(() => {
-    // Проверяем, не отключены ли анимации
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
     if (prefersReducedMotion) {
-      // Если анимации отключены, сразу показываем все фотографии
       gsap.set(imageRefs.current, {
         x: 0,
         opacity: 1
@@ -31,13 +28,12 @@ const Portfolio = () => {
       return;
     }
 
-    // Анимация для каждой фотографии отдельно
     imageRefs.current.forEach((ref, index) => {
       if (!ref) return;
 
-      // Определяем сторону появления (чередуем слева и справа)
-      const direction = index % 2 === 0 ? -1 : 1; // Четные - слева, нечетные - справа
-      const startX = direction * 100; // 100% слева или справа
+      
+      const direction = index % 2 === 0 ? -1 : 1; 
+      const startX = direction * 100;
 
       gsap.fromTo(ref,
         {
@@ -53,11 +49,10 @@ const Portfolio = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: ref,
-            start: "top 85%", // Когда верх фотографии на 85% от верха окна
+            start: "top 85%", 
             end: "top 50%",
             toggleActions: "play none none none",
             once: true,
-            // markers: true, // Для отладки
           }
         }
       );
@@ -69,14 +64,14 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className={styles.portfolio} ref={sectionRef}>
+    <div className={styles.portfolio} ref={sectionRef} id="portfolio">
       <Wrapper className={styles["portfolio-content"]}>
         <h2 className={styles["portfolio-title"]}>портфолио</h2>
         <div className={styles["portfolio-gallery"]}>
           {PORTFOLIO_IMAGES.map((img, index) => (
             <div 
               key={index}
-              ref={el => imageRefs.current[index] = el}
+              ref={(el) => {imageRefs.current[index] = el}}
               className={styles["gallery-item"]}
             >
               <img src={img} alt={`portfolio img ${index}`}/>
