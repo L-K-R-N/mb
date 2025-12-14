@@ -1,4 +1,3 @@
-// hooks/useDeviceType.ts
 import { useLayoutEffect, useState } from 'react';
 
 export type DeviceType = 'desktop' | 'tablet' | 'mobile';
